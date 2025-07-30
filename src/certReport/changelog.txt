@@ -1,4 +1,8 @@
 Changelog
+3.3.1
+- Added GoGetSSL to issuers; added GoGetSSL email address for reporting.
+- Fixed to ensure detection of SSL.com certificate is better defined. 
+
 3.3
 - Added Apple to Issuers; added Apple email address for reporting.
 

@@ -7,7 +7,7 @@ import sqlite3
 import certReport.databaseFunctions.databaseManager as db_manager
 from pathlib import Path
 
-version = "3.3"
+version = "3.3.1"
 db, cursor = db_manager.connect_to_db()
 cert_central_api = os.getenv('CERT_CENTRAL_API')
 
@@ -112,8 +112,10 @@ def query_virustotal(filehash):
     return json_python_value
 
 def get_issuer_simple_name(issuer_cn):
-    if "SSL" in issuer_cn:
+    if "SSL.com" in issuer_cn:
         return "SSL.com"
+    elif "GoGetSSL" in issuer_cn:
+        return "GoGetSSL"
     elif "Certum" in issuer_cn:
         return "Certum"
     elif "DigiCert" in issuer_cn:
@@ -137,8 +139,10 @@ def print_reporting_instructions(issuer_cn):
     print("------------------------")
     print('''Send the above message to the certificate provider. ''')
 
-    if "SSL" in issuer_cn:
+    if "SSL.com" in issuer_cn:
         print("This report should be sent to SSL.com: https://ssl.com/revoke")
+    elif "GoGetSSL" in issuer_cn:
+        print("This report should be sent to GoGetSSL: support@gogetssl.com")
     elif "Certum" in issuer_cn:
         print("This report should be sent to Certum PL: https://problemreport.certum.pl/")
     elif "DigiCert" in issuer_cn:
