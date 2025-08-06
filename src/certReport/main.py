@@ -7,7 +7,7 @@ import sqlite3
 import certReport.databaseFunctions.databaseManager as db_manager
 from pathlib import Path
 
-version = "3.3.1"
+version = "3.3.1.1"
 db, cursor = db_manager.connect_to_db()
 cert_central_api = os.getenv('CERT_CENTRAL_API')
 
