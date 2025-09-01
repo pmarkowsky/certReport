@@ -156,7 +156,7 @@ def print_reporting_instructions(issuer_cn):
     elif "Entrust" in issuer_cn:
         print("This report should be sent to Entrust: https://www.entrust.com/support/certificate-solutions/report-a-problem#form-block")
     elif "Microsoft" in issuer_cn:
-        print("Submit a copy of the file to https://www.microsoft.com/en-us/wdsi/filesubmission and email: centralpki@microsoft.com")
+        print("Submit a copy of the file to https://www.microsoft.com/en-us/wdsi/escalate and email: centralpki@microsoft.com")
     elif "Apple" in issuer_cn:
         print("This report should be sent to Apple: product-security@apple.com")
     elif "Verokey" in issuer_cn:
