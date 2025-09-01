@@ -1,6 +1,7 @@
 Changelog
-3.3.1.1
-- Updated location and instruction for reporting Microsoft certificates
+3.3.2
+- Added Verokey to issuers.
+- Added new information for Microsoft submissions
 
 3.3.1
 - Added GoGetSSL to issuers; added GoGetSSL email address for reporting.
