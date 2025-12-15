@@ -9,30 +9,30 @@ from pathlib import Path
 
 version = "3.3.2"
 db, cursor = db_manager.connect_to_db()
-cert_central_api = os.getenv('CERT_CENTRAL_API')
+cert_graveyard_api = os.getenv('CERT_GRAVEYARD_API')
 
 def post_to_public_database(payload):
     try:
-        cert_central_api = os.getenv('CERT_CENTRAL_API')
-        if cert_central_api == None:
+        cert_graveyard_api = os.getenv('CERT_GRAVEYARD_API')
+        if cert_graveyard_api == None:
             raise KeyError
     except KeyError:
-        print('''API Key is not set. It is available in your provide on Cert Central.
-        Set your Cert Central API key by running the doing the following:
+        print('''API Key is not set. It is available in your provide on Cert Graveyard.
+        Set your Cert Graveyard API key by running the doing the following:
         On Linux:
-        echo "CERT_CENTRAL_API=your_api_key_here" >> ~/.bashrc
+        echo "CERT_GRAVEYARD_API=your_api_key_here" >> ~/.bashrc
         source ~/.bashrc
 
         On Windows:
-        setx CERT_CENTRAL_API "your_api_key"
+        setx CERT_GRAVEYARD_API "your_api_key"
 
         On MacOS:
-        echo "export CERT_CENTRAL_API=your_api_key_here" >> ~/.zprofile
+        echo "export CERT_GRAVEYARD_API=your_api_key_here" >> ~/.zprofile
         source ~/.zprofile
         ''')
         exit()
-    headers = {"X-API-KEY": cert_central_api}
-    response = requests.post("https://certcentral.org/api/process_hash",headers=headers ,json=payload)
+    headers = {"X-API-KEY": cert_graveyard_api}
+    response = requests.post("https://certgraveyard.org/api/process_hash",headers=headers ,json=payload)
     response.raise_for_status()
     response = response.json()
     print(response["message"])
@@ -393,17 +393,17 @@ def main():
     parser.add_argument('-p', '--public', help="Submit the information to the public database", default=False ,action="store_true")
     args = parser.parse_args()
 
-    if not cert_central_api:
-                print('''Please set your certCentral API key by running the doing the following:
+    if not cert_graveyard_api:
+                print('''Please set your certGraveyard API key by running the doing the following:
         On Linux:
-        echo "CERT_CENTRAL_API=your_api_key_here" >> ~/.bashrc
+        echo "CERT_GRAVEYARD_API=your_api_key_here" >> ~/.bashrc
         source ~/.bashrc
 
         On Windows:
-        setx CERT_CENTRAL_API "your_api_key"
+        setx CERT_GRAVEYARD_API "your_api_key"
 
         On MacOS:
-        echo "export CERT_CENTRAL_API=your_api_key_here" >> ~/.zprofile
+        echo "export CERT_GRAVEYARD_API=your_api_key_here" >> ~/.zprofile
         source ~/.zprofile
         ''')
 
