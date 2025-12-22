@@ -1,4 +1,10 @@
 Changelog
+3.3.3.1
+- Update documentation
+
+3.3.3
+- Update API endpoint 
+
 3.3.2
 - Added Verokey to issuers.
 - Added new information for Microsoft submissions
