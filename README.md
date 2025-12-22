@@ -106,6 +106,22 @@ This report should be sent to SSL.com: https://ssl.com/revoke
 
 As stated previously, it is recommended to add additional bulletpoints near the end of the report. Additional bulletpoints should include findings from your own investigation. These details can help provide decision support for the certificate provider.
 
+## Pushing reports to public database.
+To push reports to the Cert Graveyard, use the option `-p`. It is required to have a CertGraveyard API key set as an environment variable named "CERT_GRAVEYARD_API". The API key can be obtained from your profile page when logged into TheCertGraveyard.org
+```
+Please set your certGraveyard API key by running the doing the following:
+        On Linux:
+        echo "CERT_GRAVEYARD_API=your_api_key_here" >> ~/.bashrc
+        source ~/.bashrc
+
+        On Windows:
+        setx CERT_GRAVEYARD_API "your_api_key"
+
+        On MacOS:
+        echo "export CERT_GRAVEYARD_API=your_api_key_here" >> ~/.zprofile
+        source ~/.zprofile
+```
+
 ## Database
 In version 3, a database was stored with information about all certs processed with certReport. This database contains most of the details which occur in the report. When running the command the user can use the option `-t` and supply a malware family. If the user does so, the report will add that user supplied name to the database and will check the database for any other instances of that malware name; when there are matches, it will augment the report with information about how many times that malware has been reported. For example, it could print a message like the following near the bottom of the report:
 
