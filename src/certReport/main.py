@@ -287,18 +287,18 @@ def process_virustotal_data(json_python_value, filehash, user_supplied_tag, min_
         for indicator in indicator_array:
             print(indicator)
 
-    if signature_info is not None:
+    if signature_info is not None and signature_info.get("signers"):
         issuer_simple_name = get_issuer_simple_name(issuer_cn)
         db_manager.insert_into_db(db, cursor, filehash, user_supplied_tag, subject_cn, issuer_cn, issuer_simple_name, serial_number, thumbprint, valid_from, valid_to, tag_string, "VirusTotal", team_id)
-            
 
-    if signature_info is not None:
+
+    if signature_info is not None and signature_info.get("signers"):
         print_reporting_instructions(issuer_cn)
     if malware_config:
         for family in malware_config.get("families", []):
             if user_supplied_tag is None:
                 user_supplied_tag = family["family"]
-    if signature_info is not None:
+    if signature_info is not None and signature_info.get("signers"):
         payload = {
             "hash": filehash,
             "subject_cn": subject_cn,
