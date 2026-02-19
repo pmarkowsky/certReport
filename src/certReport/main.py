@@ -7,7 +7,7 @@ import sqlite3
 import certReport.databaseFunctions.databaseManager as db_manager
 from pathlib import Path
 
-version = "3.3.3"
+version = "3.4"
 db, cursor = db_manager.connect_to_db()
 cert_graveyard_api = os.getenv('CERT_GRAVEYARD_API')
 
